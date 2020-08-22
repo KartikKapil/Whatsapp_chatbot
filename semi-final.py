@@ -15,6 +15,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import re
 
+import nlp_stage2
 
 driver = webdriver.Chrome("/home/kartik/Downloads/chromedriver_linux64 (4)/chromedriver")
 
@@ -23,7 +24,7 @@ driver = webdriver.Chrome("/home/kartik/Downloads/chromedriver_linux64 (4)/chrom
 driver.get('https://web.whatsapp.com/')
 
 input("press enter to continue")
-contact = "Chachi"
+contact = "Manav Bhai"
 searchbox = driver.find_element_by_xpath('//*[@id="side"]/div[1]/div/label/div/div[2]')
 searchbox.send_keys(contact)
 driver.implicitly_wait(20)
@@ -78,20 +79,22 @@ def repeatfun():
                 chat[key] = row[1:]
 
         try:
-            gotreply= chat[message]
+            # gotreply= chat[message]
+            gotreply= nlp_stage2.final_fuction(message)
             print(gotreply)
         except KeyError:
+            gotreply= "null"
             print("no reply")
 
     
-    if gotreply == 'null':
-        string = "Sorry! I didn't understand. I'm still learning."
-        messagebox= driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
-        messagebox.send_keys(string)
-        messagebox.send_keys(Keys.RETURN)
-    else:
-        messagebox= driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
-        messagebox.send_keys(gotreply)
-        messagebox.send_keys(Keys.RETURN)
+        if gotreply == 'null':
+            string = "Sorry! I didn't understand. I'm still learning."
+            messagebox= driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
+            messagebox.send_keys(string)
+            messagebox.send_keys(Keys.RETURN)
+        else:
+            messagebox= driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
+            messagebox.send_keys(gotreply)
+            messagebox.send_keys(Keys.RETURN)
 
 repeatfun()
