@@ -17,7 +17,7 @@ Outbreak uses a number of framework to work properly:
 * ##### Selenium 
 * ##### BeautifulSoup
 * ##### NLTK
-* ##### Tensorflow
+* ##### Tensorflow(v2+)
 * ##### pandas
 * ##### Pickle
 * ##### Numpy/Pandas
@@ -25,9 +25,8 @@ Outbreak uses a number of framework to work properly:
 
 ### How to run 
 
-**Whatsapp Chatbot requires Tensorflow v2+ to run.**
 
-Install the dependencies  start the script.
+Install the dependencies  using ``` $ pip install -r requirements.txt ```
 
 ```sh
 $ cd outbreak
